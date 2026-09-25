@@ -85,3 +85,6 @@ desktop.ini
 *.db
 *.pid
 *.seed
+
+# ===== 本地数据快照（闸口台账等运行期落盘数据） =====
+backend/data/

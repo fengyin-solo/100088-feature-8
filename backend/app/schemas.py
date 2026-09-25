@@ -28,6 +28,13 @@ class EntryPayload(BaseModel):
     remark: str | None = None
 
 
+class GateRecognitionResult(ActionResult):
+    """闸口识别登记/人工补录的结果：recognized=False 时记录处于待核实。"""
+
+    recognized: bool = True
+    reasons: list[str] = Field(default_factory=list)
+
+
 
 class BerthEntry(BaseModel):
     """泊位计划明细结构。"""
