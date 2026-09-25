@@ -21,6 +21,10 @@ class Store:
     def rows(self, module: str) -> list[dict[str, Any]]:
         return self._tables.setdefault(module, [])
 
+    def replace_rows(self, module: str, rows: list[dict[str, Any]]) -> None:
+        """整体替换某个模块的数据，供服务层从持久化文件恢复数据时使用。"""
+        self._tables[module] = rows
+
     def find(self, module: str, entry_id: int) -> dict[str, Any] | None:
         for row in self.rows(module):
             if int(row.get("id", 0)) == entry_id:
